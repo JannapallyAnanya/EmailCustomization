@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select a Google Sheet</title>
+</head>
+<body>
+    <h1>Select a Google Sheet</h1>
+    <ul>
+        {% for sheet in sheets['sheets'] %}
+        <li><a href="{{ url_for('get_sheet_data', sheet_id=sheet['properties']['title']) }}">{{ sheet['properties']['title'] }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

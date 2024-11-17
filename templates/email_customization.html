@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Customization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Customize and Send Emails</h2>
+    <form method="POST">
+        <!-- Recipient Dropdown -->
+        <div class="mb-3">
+            <label for="recipient" class="form-label">Select Recipient:</label>
+            <select id="recipient" name="recipient" class="form-select" onchange="toggleEmailInput(this.value)">
+                <option value="" selected disabled>Select email</option>
+                {% for email in emails %}
+                    <option value="{{ email }}">{{ email }}</option>
+                {% endfor %}
+                <option value="other">Other (Enter Manually)</option>
+            </select>
+        </div>
+
+        <!-- Input field for manual email entry, hidden by default -->
+        <div class="mb-3" id="otherEmailDiv" style="display: none;">
+            <label for="otherEmail" class="form-label">Enter Custom Email:</label>
+            <input type="email" id="otherEmail" name="otherEmail" class="form-control" placeholder="example@example.com" required>
+        </div>
+
+        <!-- Subject -->
+        <div class="mb-3">
+            <label for="subject" class="form-label">Email Subject:</label>
+            <input type="text" id="subject" name="subject" class="form-control" required>
+        </div>
+
+        <!-- Email Body -->
+        <div class="mb-3">
+            <label for="body" class="form-label">Email Body:</label>
+            <textarea id="body" name="body" class="form-control" rows="5" required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Send Email</button>
+    </form>
+</div>
+
+<script>
+    // Toggle visibility of the manual email input field
+    function toggleEmailInput(value) {
+        const otherEmailDiv = document.getElementById('otherEmailDiv');
+        if (value === 'other') {
+            otherEmailDiv.style.display = 'block';
+        } else {
+            otherEmailDiv.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
