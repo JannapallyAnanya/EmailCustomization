@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV Data</title>
+</head>
+<body>
+    <h1>CSV Data</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Company Name</th>
+                <th>Location</th>
+                <th>Email</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row['Company Name'] }}</td>
+                <td>{{ row['Location'] }}</td>
+                <td>{{ row['Email'] }}</td>
+                <td>{{ row['Products'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
