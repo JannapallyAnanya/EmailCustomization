@@ -22,7 +22,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = os.getenv('OAUTHLIB_INSECURE_TRANSPO
 load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY')
-app.secret_key = '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'
+#app.secret_key = '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'
 app.config['SESSION_COOKIE_SECURE'] = False
 app.config['SESSION_COOKIE_HTTPONLY'] = True 
 app.config['SESSION_PERMANENT'] = True  
@@ -95,11 +95,12 @@ def register():
         mesage = 'Please fill out the form !'
     return render_template('register.html', mesage = mesage)
     
-CLIENT_SECRETS_FILE = "client_secrets.json"  
+CLIENT_SECRETS_FILE = os.getenv('CLIENT_SECRETS_FILE') 
 SCOPES = [
     'https://www.googleapis.com/auth/drive.readonly',
     'https://www.googleapis.com/auth/spreadsheets.readonly'
 ]
+
 REDIRECT_URI = os.getenv('REDIRECT_URI')
 UPLOAD_FOLDER = 'uploads'  
 ALLOWED_EXTENSIONS = {'csv'}
